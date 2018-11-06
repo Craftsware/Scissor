@@ -12,7 +12,8 @@
     "authors": [
         {
             "name": "Ruel Mindo",
-            "role": "Developer"
+            "role": "Developer",
+            "email": "wrelmind@gmail.com"
         }
     ],
     "require": {
