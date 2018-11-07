@@ -10,6 +10,7 @@ Install scissor using [Composer](http://getcomposer.org/)
 ```bash
 composer require craftsware/scissor
 ```
+## Autoload
 Instantiate scissor in your index.php and run.
 ```php
 // index.php
