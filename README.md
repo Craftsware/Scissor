@@ -1,4 +1,4 @@
-# Scissor HMVC PHP Framework
+# Scissor PHP Framework
 
 Simple light HMVC framework for PHP
 
