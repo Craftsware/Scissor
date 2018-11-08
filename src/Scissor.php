@@ -3,10 +3,12 @@
 /**
  * Scissor (http://craftsware.net/scissor)
  *
+ * @author    Ruel Mindo
  * @link      https://github.com/craftsware/scissor
  * @license   https://github.com/craftsware/scissor/LICENSE.md (MIT License)
  * @copyright Copyright (c) 2017 Ruel Mindo
- *
+ * @since     0.0.1
+ * 
  */
 
 namespace Craftsware;
@@ -35,11 +37,11 @@ class Scissor {
 
 
     /**
-    * Library
+    * Container
     *
-    * @var object $collection
+    * @var array $container
     */
-    protected $library = [
+    protected $container = [
         'Craftsware\Lib\Time',
         'Craftsware\Lib\Database'
     ];
@@ -58,14 +60,14 @@ class Scissor {
         $lib['request'] = new Request($lib);
         $lib['response'] = new Response($lib);
 
-        // Library
-        foreach($this->library as $namespace) {
+        // Container
+        foreach($this->container as $namespace) {
 
             $name = strtolower(basename($namespace));
 
-            if(isset($args['library']) && isset($args['library'][$name])) {
+            if(isset($args['container']) && isset($args['container'][$name])) {
 
-                // Handle error if library name already exist
+                // Handle error if container name already exist
             } else {
                     
                 if(isset($args['settings'][$name])) {
@@ -74,15 +76,17 @@ class Scissor {
 
                 } else {
 
-                    $lib[$name] = new $namespace($args['library']);
+                    $lib[$name] = new $namespace($lib);
                 }
             }
         }
 
-        // Library
-        foreach($args['library'] as $name => $namespace) {
+        if(isset($args['container'])) {
 
-            $lib[$name] = new $namespace($lib);
+            foreach($args['container'] as $name => $namespace) {
+
+                $lib[$name] = new $namespace($lib);
+            }
         }
 
 
